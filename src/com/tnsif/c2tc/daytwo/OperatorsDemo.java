@@ -7,7 +7,8 @@ public class OperatorsDemo {
      int a = 10;
      int b =20;
      int x =10;
-     System.out.println("a and b value before the oeprations:"+a+" "+b);
+     System.out.println(a+b+"a and b value before the oeprations:");
+     System.out.println("a and b value after the oeprations:"+a+b);
      ++a;
      int c = ++a+b;
      System.out.println("C value : "+c);
