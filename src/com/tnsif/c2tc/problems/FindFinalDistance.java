@@ -5,7 +5,7 @@ public class FindFinalDistance {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
        int x = 0 , y = 0 , n;                //origin x,y
-       int distUnit = 10;
+       int distUnit = 10;       //initially distance unit is 10
        boolean isX = true;     //true means x axis false means y axis
        boolean isPos = true;  //true means right & upwards direction false means left & downwards direction
        Scanner in = new Scanner(System.in);
