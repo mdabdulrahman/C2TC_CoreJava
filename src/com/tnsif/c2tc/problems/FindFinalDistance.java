@@ -14,7 +14,7 @@ public class FindFinalDistance {
        while(n > 0) 
        {
     	   
-    	   if(isX && isPos)   //moving axis x and direction is right
+    	   if(isX && isPos)         //moving axis x and direction is right
     	   {   //turns right
     		   x = x+distUnit;
     	   }
@@ -22,12 +22,12 @@ public class FindFinalDistance {
     	   {    //turns left
     		   x = x-distUnit;
     	   }
-    	   else if( !isX && isPos )     //moving axis x and direction is upwards
+    	   else if( !isX && isPos ) //moving axis x and direction is upwards
     	   {    //turns upwards
     		   y = y+distUnit;
     		   isPos = !isPos;
     	   }
-    	   else                          //moving axis y and direction is downward
+    	   else                     //moving axis y and direction is downward
     	   {   //turns downward
     		   y = y-distUnit;
     		   isPos = !isPos;
