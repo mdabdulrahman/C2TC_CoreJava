@@ -12,7 +12,7 @@ public class AssignmentMain {
         
         Circle cir = new Circle();
         cir.getInput();
-        System.out.println(cir.calcArea());
+        System.out.println(cir.calcArea()); //to calculate area
 	}
 
 }
