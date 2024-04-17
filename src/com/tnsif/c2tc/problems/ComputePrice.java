@@ -15,6 +15,7 @@ public class ComputePrice {
         	price = price*rem;  //multiply each digits
         }
         System.out.println(price);
+        in.close();
         
 	}
 

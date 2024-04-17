@@ -38,6 +38,7 @@ public class FindFinalDistance {
     	  distUnit += 10;   //increasing distance unit by 10
        }
        System.out.println(x+" "+y);
+       in.close();
 	}
 
 }
