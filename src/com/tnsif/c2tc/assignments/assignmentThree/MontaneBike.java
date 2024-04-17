@@ -7,7 +7,7 @@ public class MontaneBike extends Bicycle
 		@Override
 		public String toString() 
 		{
-			return "No of gears are "+noOfGears+"\n Speed of bicycle is "+speed+"\nSeat height is "+seatHeight;
+			return "No of gears are "+noOfGears+"\nSpeed of bicycle is "+speed+"\nSeat height is "+seatHeight;
 		}
 
 		/**
