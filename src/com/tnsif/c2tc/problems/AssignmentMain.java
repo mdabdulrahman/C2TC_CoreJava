@@ -1,4 +1,4 @@
-package com.tnsif.c2tc.assignments.assignmentThree;
+package com.tnsif.c2tc.problems;
 import java.util.Scanner;
 public class AssignmentMain {
 
