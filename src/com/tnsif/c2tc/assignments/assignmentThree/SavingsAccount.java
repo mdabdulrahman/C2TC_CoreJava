@@ -15,7 +15,9 @@ public  class SavingsAccount extends Account
 		return true;
 	}
 	@Override
-	public double withdraw(double amount) {
+	public double withdraw(double amount,short pin) {
+	 if( checkPin(pin))
+	 {
 		if(TransactionLimit < totalTransactions) {
 			System.out.println("Transaction Limit Exceeded!");
 			return balance;
@@ -30,22 +32,31 @@ public  class SavingsAccount extends Account
 		   totalTransactions++;
 	  }
 		  return balance;
-	  
+	  }
+	
+ 		System.out.println("Incorrect Pin Number !");
+ 		return 0;
+ 	
+	 
 	}
 	@Override
 	public double getBalance() {
 		
 		return balance;
 	}
+	
+	private boolean checkPin(short pin) {
+		return this.pin == pin;
+	}
+	
+	
 	double getInterestRate() {
 		return interestRate;
 	}
 	void setInterestRate(double interestRate) {
 		this.interestRate = interestRate;
 	}
-	short getPin() {
-		return pin;
-	}
+	
 	void setPin(short pin) {
 		this.pin = pin;
 	}
@@ -64,15 +75,9 @@ public  class SavingsAccount extends Account
 	int getTotalTransactions() {
 		return totalTransactions;
 	}
-	void setTotalTransactions(int totalTransactions) {
-		this.totalTransactions = totalTransactions;
-	}
-	void setBalance(int balance) {
-		this.balance = balance;
-	}
-	boolean checkPin(short pin) {
-		return this.pin == pin;
-	}
+
+
+	
 	/**
 	 * @param name
 	 * @param age

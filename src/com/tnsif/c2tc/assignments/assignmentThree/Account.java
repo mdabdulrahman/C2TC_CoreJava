@@ -3,9 +3,9 @@ package com.tnsif.c2tc.assignments.assignmentThree;
 public abstract class Account {
    
 	public abstract boolean deposit(double amount);
-	public abstract double withdraw(double amount);
+	public abstract double withdraw(double amount,short pin);
 	public abstract double getBalance();
-	
+
 
 	private final int accNo;
 	private String name;

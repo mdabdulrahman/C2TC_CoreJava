@@ -15,51 +15,22 @@ public class CheckingAccount extends Account
 	@Override
 	public boolean deposit(double amount) {
 		balance += amount;
-
 		return true;
 	}
 
 	@Override
-	public double withdraw(double amount) {
+	public double withdraw(double amount,short pin) {
+	 if(checkPin(pin))
+	 {
+		//checking transaction limit
 		if( totTransactions > TransactionLimit) {
 			System.out.println("Transaction Limit Exceeded!");
+			return balance;
 		}
-	    if( amount > balance) {
-	    	      double linkBal =0;
-	    	      double totBal;
-	              Account atype = Bank.getAccountType(linkAccountNo);
-	              
-	              if(atype==null)
-	              {
-	            	  System.out.println("Insufficient balance and Linked Account is doesn't exist!");
-	            	  return balance;
-	              }
-	              String type = atype.getAccType();
-	              Account acc;
-	              if(type == "savings") {
-	            	  
-	            	acc = Bank.getSavingsAccount(linkAccountNo);
-	            	 linkBal = acc.getBalance();
-	            	 
-	              }
-	              else {
-	            	 acc = Bank.getCheckingAccount(linkAccountNo);
-	            	  linkBal = acc.getBalance();
-	              }
-	              totBal = linkBal+balance;
-	          if(totBal > amount) {
-	        	  totOverDraft++;
-	        	  System.out.println("OverDraft From Linked Account No : "+linkAccountNo);
-	        	  amount -= balance;
-	        	  balance =0;
-	        	  
-	        	  acc.withdraw(amount);
-	        	  
-	          }
-	          else
-	          {
-	        	  System.out.println("Insufficient Balance in Linked Account Also!");
-	          }
+		
+		if( amount > balance) {
+			
+	    	      overDraft(amount);
 	    }
 	    else 
 	    {
@@ -69,8 +40,44 @@ public class CheckingAccount extends Account
 	    }
 	    
 		return balance;
-	}
+	 }
 
+ 		System.out.println("Incorrect Pin Number !");
+ 		return 0;
+ 
+	 
+	}
+	private boolean checkPin(short pin) {
+		return this.pin == pin;
+	}
+   public boolean overDraft(double amount)
+   {
+	   double linkBal = 0;
+	   double totBal;
+       Account account = Bank.getAccount(linkAccountNo);
+       //if linkAccount doesn't exists
+       if(account==null)
+       {
+     	  System.out.println("Insufficient balance and Linked Account is doesn't exist!");
+     	  return false;
+       }
+      
+      linkBal = account.getBalance();  //getting linked account balance
+      totBal = linkBal+balance;        //adding this account balance and linked account
+      if(totBal > amount)              
+      {
+ 	     totOverDraft++;
+ 	     System.out.println("OverDraft From Linked Account No : "+linkAccountNo);
+ 	     amount -= balance;         //subtracting amount from balance
+ 	     balance = 0;
+ 	     
+ 	     return true;
+      }
+     
+ 	  System.out.println("Insufficient Balance in Linked Account Also!");
+ 	  return false;
+     
+   }
 	/**
 	 * @param accNo
 	 * @param name
@@ -142,9 +149,7 @@ public class CheckingAccount extends Account
 		this.totOverDraft = totOverDraft;
 	}
 
-	boolean checkPin(short pin) {
-		return this.pin == pin;
-	}
+	
 
 
 }
