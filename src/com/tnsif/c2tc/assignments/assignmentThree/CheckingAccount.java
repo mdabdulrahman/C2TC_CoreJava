@@ -50,6 +50,7 @@ public class CheckingAccount extends Account
 	private boolean checkPin(short pin) {
 		return this.pin == pin;
 	}
+  
    public boolean overDraft(double amount)
    {
 	   double linkBal = 0;
@@ -70,7 +71,8 @@ public class CheckingAccount extends Account
  	     System.out.println("OverDraft From Linked Account No : "+linkAccountNo);
  	     amount -= balance;         //subtracting amount from balance
  	     balance = 0;
- 	     
+ 	     Transaction trans = new Transaction();
+ 	     trans.overDraft(account,amount);
  	     return true;
       }
      

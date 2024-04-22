@@ -39,7 +39,7 @@ public final class Transaction {
     	System.out.println("Enter Pin : ");
     	short pin = in.nextShort();
     	Account account=Bank.getAccount(accNo);
-    	account.withdraw(amount,pin);
+    	System.out.println("Available Balance : "+account.withdraw(amount,pin));
     	return true;
     
     }
@@ -56,7 +56,13 @@ public final class Transaction {
         
     	
     }
-   
+   final boolean overDraft(Account account,double amount) {
+	   System.out.println("Enter linked account's Pin : ");
+   	   short pin = in.nextShort();
+   	   
+   	  System.out.println("Available balance in linked account :"+account.withdraw(amount, pin)); 
+   	   return true;
+   }
 	public final boolean performTransaction(String transactionType) {
 		Bank.increTransactions();
 		switch(transactionType) {
