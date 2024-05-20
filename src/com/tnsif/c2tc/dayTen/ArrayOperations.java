@@ -1,4 +1,4 @@
-package com.tnsif.dayTen;
+package com.tnsif.c2tc.dayTen;
 
 public class ArrayOperations 
 {
